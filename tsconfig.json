@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "module": "CommonJS",
+    "outDir": "./dist/cjs",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true
+  },
+  "include": ["src/**/*", "__tests__/**/*"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx"]
+}
