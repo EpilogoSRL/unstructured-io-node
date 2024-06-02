@@ -39,6 +39,7 @@ if [ "$UNAME" == "Linux" ] ; then
       poppler-utils \
       leptonica \
       tesseract-ocr \
+      tesseract-lang \
       libreoffice \
       libmagic \
       libmagic-dev;
@@ -48,6 +49,8 @@ elif [ "$UNAME" == "Darwin" ] ; then
     brew install pandoc \
       poppler \
       leptonica \
+      tesseract-ocr \
+      tesseract-lang \
       tesseract \
       libreoffice \
       libmagic;
