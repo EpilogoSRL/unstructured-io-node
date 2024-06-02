@@ -170,42 +170,44 @@ export const UnstructuredIO = {
      */
     // [key: string]: any
   }) {
-    const result = await interpreter.call(
-      await pythonEntry.getValue(),
-      'partition',
-      cleanArgs({
-        // Must match python/unstructured.io/unstructured/partition/auto.py::partition signature
-        __kwargs: true,
-        filename: options.filename,
-        content_type: options.content_type,
-        file: options.file,
-        file_filename: options.file_filename,
-        url: options.url,
-        include_page_breaks: options.include_page_breaks,
-        strategy: options.strategy ?? 'hi_res',
-        encoding: options.encoding,
-        paragraph_grouper: options.paragraph_grouper,
-        headers: options.headers,
-        skip_infer_table_types: options.skip_infer_table_types ?? [],
-        ssl_verify: options.ssl_verify,
-        ocr_languages: options.ocr_languages,
-        languages: options.languages,
-        detect_language_per_element: options.detect_language_per_element,
-        pdf_infer_table_structure: options.pdf_infer_table_structure,
-        extract_images_in_pdf: options.extract_images_in_pdf,
-        extract_image_block_types: options.extract_image_block_types,
-        extract_image_block_output_dir: options.extract_image_block_output_dir,
-        extract_image_block_to_payload: options.extract_image_block_to_payload,
-        xml_keep_tags: options.xml_keep_tags,
-        data_source_metadata: options.data_source_metadata,
-        metadata_filename: options.metadata_filename,
-        request_timeout: options.request_timeout,
-        hi_res_model_name: options.hi_res_model_name,
-        model_name: options.model_name,
-        date_from_file_object: options.date_from_file_object,
-        starting_page_number: options.starting_page_number ?? 1,
-      }),
-    );
+    const result = await errorHandler(async () => {
+      return interpreter.call(
+        await pythonEntry.getValue(),
+        'partition',
+        cleanArgs({
+          // Must match python/unstructured.io/unstructured/partition/auto.py::partition signature
+          __kwargs: true,
+          filename: options.filename,
+          content_type: options.content_type,
+          file: options.file,
+          file_filename: options.file_filename,
+          url: options.url,
+          include_page_breaks: options.include_page_breaks,
+          strategy: options.strategy ?? 'hi_res',
+          encoding: options.encoding,
+          paragraph_grouper: options.paragraph_grouper,
+          headers: options.headers,
+          skip_infer_table_types: options.skip_infer_table_types ?? [],
+          ssl_verify: options.ssl_verify,
+          ocr_languages: options.ocr_languages,
+          languages: options.languages,
+          detect_language_per_element: options.detect_language_per_element,
+          pdf_infer_table_structure: options.pdf_infer_table_structure,
+          extract_images_in_pdf: options.extract_images_in_pdf,
+          extract_image_block_types: options.extract_image_block_types,
+          extract_image_block_output_dir: options.extract_image_block_output_dir,
+          extract_image_block_to_payload: options.extract_image_block_to_payload,
+          xml_keep_tags: options.xml_keep_tags,
+          data_source_metadata: options.data_source_metadata,
+          metadata_filename: options.metadata_filename,
+          request_timeout: options.request_timeout,
+          hi_res_model_name: options.hi_res_model_name,
+          model_name: options.model_name,
+          date_from_file_object: options.date_from_file_object,
+          starting_page_number: options.starting_page_number ?? 1,
+        }),
+      )
+    });
     return result as Array<{
       type?: string;
       element_id?: string;
@@ -228,3 +230,15 @@ export const UnstructuredIO = {
     }>;
   },
 };
+
+async function errorHandler<T>(fn: () => Promise<T>) {
+  try {
+    return await fn();
+  } catch(e) {
+    if (typeof e === 'string') {
+      throw new Error(e)
+    }
+
+    throw e;
+  }
+}
