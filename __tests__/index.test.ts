@@ -1,6 +1,7 @@
 import { UnstructuredIO } from '../src';
 import * as path from 'path';
 import NodeCallsPythonPartitioned from './data/node-calls-python-partitioned.json';
+import WithImagesPartitioned from './data/with-images-partitioned.json';
 
 describe('unstructured-io-node', () => {
   it('partitions a file', async () => {
@@ -12,5 +13,17 @@ describe('unstructured-io-node', () => {
     });
 
     expect(partitioned).toMatchObject(NodeCallsPythonPartitioned);
+  }, 200 * 1000);
+
+  it('partitions a file that requires OCR', async () => {
+    const partitioned = await UnstructuredIO.partition({
+      filename: path.join(__dirname, '../__tests__/data/with-images.pdf'),
+      strategy: 'hi_res',
+      languages: ['eng', 'ita'],
+      xml_keep_tags: true,
+      include_page_breaks: false,
+    });
+
+    expect(partitioned).toMatchObject(WithImagesPartitioned);
   }, 200 * 1000);
 });
