@@ -1,0 +1,2 @@
+FROM krishanmarco/unstructured-io-node:latest
+CMD (pnpm run test && echo "Tests passed" || (echo "Tests failed" && exit 1))

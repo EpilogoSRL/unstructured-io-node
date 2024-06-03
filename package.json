@@ -29,6 +29,9 @@
   ],
   "scripts": {
     "test": "jest --coverage",
+    "test:docker": "docker build -f Dockerfile.test --no-cache -t epilogo_unstructured . && docker run -it epilogo_unstructured",
+    "publish:docker": "docker build -t krishanmarco/unstructured-io-node:latest --no-cache . && docker push krishanmarco/unstructured-io-node:latest",
+    "publish:docker-multiarch": "docker buildx build --platform linux/amd64,linux/arm64 -t krishanmarco/unstructured-io-node:latest --push .",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --color --fix",
     "build": "pnpm run build:cjs && pnpm run build:types",
     "build:cjs": "tsc",
