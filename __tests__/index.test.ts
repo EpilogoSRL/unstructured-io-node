@@ -2,8 +2,16 @@ import { UnstructuredIO } from '../src';
 import * as path from 'path';
 import NodeCallsPythonPartitioned from './data/node-calls-python-partitioned.json';
 import WithImagesPartitioned from './data/with-images-partitioned.json';
+import { ensureEnvironmentSetup } from '../src/utils/ensureEnvironmentSetup';
 
 describe('unstructured-io-node', () => {
+
+  beforeAll(async () => {
+    // Give enough timeout in case the dependencies need to be installed
+    await ensureEnvironmentSetup();
+  }, 30 * 60 * 1000);
+
+
   it('partitions a file', async () => {
     const partitioned = await UnstructuredIO.partition({
       filename: path.join(__dirname, '../__tests__/data/node-calls-python.pdf'),

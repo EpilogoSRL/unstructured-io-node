@@ -2,8 +2,10 @@ import { interpreter } from 'node-calls-python';
 import { cleanArgs } from './utils/cleanArgs';
 import { MutexValue } from './utils/MutexValue';
 import { pythonDir } from './utils/pythonDir';
+import { ensureEnvironmentSetup } from './utils/ensureEnvironmentSetup';
 
-const pythonEntry = new MutexValue(() => {
+const pythonEntry = new MutexValue(async () => {
+  await ensureEnvironmentSetup();
   interpreter.addImportPath(pythonDir('venv/lib/python3.12/site-packages'));
   return interpreter.import(pythonDir('entry.py'), false);
 });
@@ -206,7 +208,7 @@ export const UnstructuredIO = {
           date_from_file_object: options.date_from_file_object,
           starting_page_number: options.starting_page_number ?? 1,
         }),
-      )
+      );
     });
     return result as Array<{
       type?: string;
@@ -234,9 +236,9 @@ export const UnstructuredIO = {
 async function errorHandler<T>(fn: () => Promise<T>) {
   try {
     return await fn();
-  } catch(e) {
+  } catch (e) {
     if (typeof e === 'string') {
-      throw new Error(e)
+      throw new Error(e);
     }
 
     throw e;
