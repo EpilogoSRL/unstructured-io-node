@@ -1,328 +1,34 @@
 [
   {
     "type": "Image",
-    "element_id": "8ee61a901f3355737d7e7e8aa9dc9c51",
-    "text": "ean a 0 Eat-in Kitchen BAH a7 0 Formal Living Formal Dining rH a7 50 Entrance ~ BREAD BAH?",
-    "metadata": {
-      "detection_class_prob": 0.8424017429351807,
-      "coordinates": {
-        "points": [
-          [
-            200.58836364746094,
-            202.77978515625
-          ],
-          [
-            200.58836364746094,
-            1029.7603759765625
-          ],
-          [
-            1382.92041015625,
-            1029.7603759765625
-          ],
-          [
-            1382.92041015625,
-            202.77978515625
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "anna 0 Eat-in Kitchen BRH a7 0 Formal Living Formal Dining BRH a7 50 Entrance “enna BAH?"
   },
   {
     "type": "Title",
-    "element_id": "cef4583c7c1c9537d93754de619e301f",
-    "text": "Cancel Plan",
-    "metadata": {
-      "detection_class_prob": 0.7476273775100708,
-      "coordinates": {
-        "points": [
-          [
-            220.8243408203125,
-            1042.393310546875
-          ],
-          [
-            220.8243408203125,
-            1079.4373779296875
-          ],
-          [
-            430.0390930175781,
-            1079.4373779296875
-          ],
-          [
-            430.0390930175781,
-            1042.393310546875
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "Cancel Plan"
   },
   {
     "type": "NarrativeText",
-    "element_id": "6e897489abc8be834c63b81b6560ee64",
-    "text": "To cancel your current plan, please complete the following steps:",
-    "metadata": {
-      "detection_class_prob": 0.7148787379264832,
-      "coordinates": {
-        "points": [
-          [
-            225.30831909179688,
-            1130.004150390625
-          ],
-          [
-            225.30831909179688,
-            1152.601318359375
-          ],
-          [
-            960.93994140625,
-            1152.601318359375
-          ],
-          [
-            960.93994140625,
-            1130.004150390625
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "parent_id": "cef4583c7c1c9537d93754de619e301f",
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "To cancel your current plan, please complete the following steps:"
   },
   {
     "type": "NarrativeText",
-    "element_id": "e98fc7e3cc42a2dba6766aea9e1c9131",
-    "text": "1. From the Unstructured SaaS API webpage, navigate to FAQ section and click the “Cancel Plan” link.",
-    "metadata": {
-      "detection_class_prob": 0.586423397064209,
-      "coordinates": {
-        "points": [
-          [
-            223.6508026123047,
-            1208.9000244140625
-          ],
-          [
-            223.6508026123047,
-            1232.146240234375
-          ],
-          [
-            1364.875732421875,
-            1232.146240234375
-          ],
-          [
-            1364.875732421875,
-            1208.9000244140625
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "parent_id": "cef4583c7c1c9537d93754de619e301f",
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "1. From the Unstructured SaaS API webpage, navigate to FAQ section and click the “Cancel Plan” link."
   },
   {
     "type": "NarrativeText",
-    "element_id": "e383eb88819a3c27e1f1f437eb0bd4d1",
-    "text": "2. When the pop-up form appears, provide your registered Email in the first field.",
-    "metadata": {
-      "detection_class_prob": 0.6106879711151123,
-      "coordinates": {
-        "points": [
-          [
-            229.66163635253906,
-            1257.3695068359375
-          ],
-          [
-            229.66163635253906,
-            1279.587646484375
-          ],
-          [
-            1124.384521484375,
-            1279.587646484375
-          ],
-          [
-            1124.384521484375,
-            1257.3695068359375
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "parent_id": "cef4583c7c1c9537d93754de619e301f",
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "2. When the pop-up form appears, provide your registered Email in the first field."
   },
   {
     "type": "NarrativeText",
-    "element_id": "95d9e94329a746f25612f57656f0b2e4",
-    "text": "3. Enter your Current API Key in the following field.",
-    "metadata": {
-      "detection_class_prob": 0.45358285307884216,
-      "coordinates": {
-        "points": [
-          [
-            227.66517639160156,
-            1304.4593505859375
-          ],
-          [
-            227.66517639160156,
-            1329.2293701171875
-          ],
-          [
-            803.3878173828125,
-            1329.2293701171875
-          ],
-          [
-            803.3878173828125,
-            1304.4593505859375
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "parent_id": "cef4583c7c1c9537d93754de619e301f",
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "3. Enter your Current API Key in the following field."
   },
   {
     "type": "NarrativeText",
-    "element_id": "7ed31ce71a5ede59127790bb4f7524c2",
-    "text": "4. Click the Submit button to send your cancellation request.",
-    "metadata": {
-      "detection_class_prob": 0.5995369553565979,
-      "coordinates": {
-        "points": [
-          [
-            226.6451416015625,
-            1354.9034423828125
-          ],
-          [
-            226.6451416015625,
-            1378.59521484375
-          ],
-          [
-            912.5751342773438,
-            1378.59521484375
-          ],
-          [
-            912.5751342773438,
-            1354.9034423828125
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "parent_id": "cef4583c7c1c9537d93754de619e301f",
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "4. Click the Submit button to send your cancellation request."
   },
   {
     "type": "NarrativeText",
-    "element_id": "9747517889d77f3c4fff22b6a8afab9b",
-    "text": "Upon submission, our team will process your request, and you will receive a confirmation email regarding the cancellation of your plan.",
-    "metadata": {
-      "detection_class_prob": 0.4145680367946625,
-      "coordinates": {
-        "points": [
-          [
-            223.7397003173828,
-            1435.122314453125
-          ],
-          [
-            223.7397003173828,
-            1500.0899658203125
-          ],
-          [
-            1403.2645263671875,
-            1500.0899658203125
-          ],
-          [
-            1403.2645263671875,
-            1435.122314453125
-          ]
-        ],
-        "system": "PixelSpace",
-        "layout_width": 1700,
-        "layout_height": 2200
-      },
-      "last_modified": "2024-02-06T22:31:17",
-      "filetype": "application/pdf",
-      "languages": [
-        "eng",
-        "ita"
-      ],
-      "page_number": 1,
-      "parent_id": "cef4583c7c1c9537d93754de619e301f",
-      "file_directory": "/Users/krm/projects/epilogo/unstructured-io-node/__tests__/data",
-      "filename": "with-images.pdf"
-    }
+    "text": "Upon submission, our team will process your request, and you will receive a confirmation email regarding the cancellation of your plan."
   }
 ]
