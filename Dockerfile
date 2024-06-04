@@ -41,7 +41,8 @@ RUN apt-get update && apt-get install -y \
       python3-venv \
       python3-distutils \
       python3-distutils-extra \
-      python3-pip;
+      python3-pip \
+      libpython3.11;
 
 RUN mkdir -p /app
 COPY . /app
