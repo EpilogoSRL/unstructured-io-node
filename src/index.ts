@@ -1,16 +1,21 @@
 import { interpreter } from 'node-calls-python';
 import { cleanArgs } from './utils/cleanArgs';
 import { MutexValue } from './utils/MutexValue';
-import { pythonDir } from './utils/pythonDir';
+import { rootDir } from './utils/rootDir';
 import { ensureEnvironmentSetup } from './utils/ensureEnvironmentSetup';
+import { fileExistsAsync } from './utils/fileExistsAsync';
 
 const pythonEntry = new MutexValue(async () => {
-  await ensureEnvironmentSetup();
-  interpreter.addImportPath(pythonDir('venv/lib/python3.12/site-packages'));
-  return interpreter.import(pythonDir('entry.py'), false);
+  const venv = rootDir('/python/venv/lib/python3.12/site-packages');
+  if (await fileExistsAsync(venv)) {
+    interpreter.addImportPath(venv);
+  }
+
+  return interpreter.import(rootDir('/python/entry.py'), false);
 });
 
 export const UnstructuredIO = {
+  ensureEnvironmentSetup,
   async partition(options: {
     /**
      * A string defining the target filename path.

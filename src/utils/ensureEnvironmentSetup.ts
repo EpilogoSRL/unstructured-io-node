@@ -1,29 +1,19 @@
-import * as path from 'path';
-import * as fs from 'fs';
 import { spawn } from 'child_process';
-
-const venvPath = path.join(__dirname, '../../python/venv');
-const installCompleteFilePath = path.join(__dirname, '../../scripts/setup_complete');
-const installScriptPath = path.join(__dirname, '../../scripts/install.sh');
-
-function fileExistsAsync(path: string) {
-  return new Promise<boolean>((resolve) => {
-    fs.access(venvPath, fs.constants.F_OK, (err) => {
-      if (!err) {
-        resolve(true)
-        return;
-      }
-
-      resolve(false);
-    });
-  })
-}
+import { fileExistsAsync } from './fileExistsAsync';
+import { rootDir } from './rootDir';
+import fs from 'fs';
 
 /**
  * Check if the python venv directory exists
  * this is used to flag if install.sh has run or not
  */
-export async  function ensureEnvironmentSetup() {
+export async function ensureEnvironmentSetup() {
+  const venvPath = rootDir('/python/venv');
+  const scriptsDir = rootDir('/scripts');
+  const installCompleteFilePath = '/tmp/unstructured_io_1_0_13_setup_complete';
+  const installScriptPath = rootDir('/scripts/install.sh');
+  const unstructuredScriptPath = rootDir('/scripts/unstructured.sh');
+
   const venvExists = await fileExistsAsync(venvPath);
   const setupCompleteFileExists = await fileExistsAsync(installCompleteFilePath);
 
@@ -31,11 +21,15 @@ export async  function ensureEnvironmentSetup() {
     return;
   }
 
+  fs.chmodSync(installScriptPath, '755')
+  fs.chmodSync(unstructuredScriptPath, '755')
+
   return new Promise<void>((resolve, reject) => {
     console.log('venv does not exist, running install script');
     const child = spawn(installScriptPath, {
       stdio: 'inherit',
-      shell: true
+      shell: true,
+      cwd: rootDir()
     });
 
     child.on('error', (error) => {
@@ -46,6 +40,7 @@ export async  function ensureEnvironmentSetup() {
     child.on('close', (code) => {
       if (code === 0) {
         console.log('install script completed successfully');
+        fs.writeFileSync(installCompleteFilePath, 'done');
         resolve();
       } else {
         console.error(`install script exited with code ${code}`);

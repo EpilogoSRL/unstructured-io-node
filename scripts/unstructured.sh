@@ -52,6 +52,19 @@ else
     exit 1
 fi
 
+###
+### Unstructured dependencies (pip)
+###
+if [ "$UNAME" == "Linux" ] ; then
+  echo "Nothing to do"
+elif [ "$UNAME" == "Darwin" ] ; then
+  python3 -m venv "$PYTHON_DIR"/venv
+  source "$PYTHON_DIR"/venv/bin/activate
+else
+    echo "Unsupported operating system"
+    exit 1
+fi
+
 python3 -m pip install --upgrade pip setuptools
 python3 -m pip install "unstructured[all-docs]";
 python3 -m pip install requests;

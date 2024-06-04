@@ -34,6 +34,11 @@ Here's a basic example demonstrating how to use the library:
 import { UnstructuredIO } from '@epilogo/unstructured-io-node';
 import * as path from 'path';
 
+// This must be called at least once in your container or local environment
+// It takes care of installing the neccesary dependencies.
+// Only macOS and Linux is supported
+await UnstructuredIO.ensureEnvironmentSetup();
+
 const partitioned = await UnstructuredIO.partition({
  filename: path.join(__dirname, '../__tests__/data/your-document.pdf'), 
  strategy: 'hi_res',
