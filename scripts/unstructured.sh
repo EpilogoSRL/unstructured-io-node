@@ -2,6 +2,7 @@
 
 SCRIPT_DIR=./scripts
 PYTHON_DIR="$SCRIPT_DIR/../python"
+UNAME=$(uname -s)
 
 if [ ! -d "$PYTHON_DIR/unstructured-io" ]; then
   ssh-keyscan github.com >> ~/.ssh/known_hosts &&
