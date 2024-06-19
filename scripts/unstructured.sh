@@ -67,5 +67,5 @@ else
 fi
 
 python3 -m pip install --upgrade pip setuptools
-python3 -m pip install "unstructured[all-docs]";
+python3 -m pip install "unstructured[all-docs]==0.14.4";
 python3 -m pip install requests;
