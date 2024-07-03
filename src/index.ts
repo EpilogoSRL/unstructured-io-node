@@ -171,6 +171,48 @@ export const UnstructuredIO = {
      * Default is 1.
      */
     starting_page_number?: number;
+
+    /**
+     * Chunking params below
+     * Chunking can be performed as part of partitioning by specifying a value for the chunking_strategy argument.
+     * The current options are basic and by-title (described below).
+     */
+    chunking_strategy?: 'basic' | 'by_title',
+
+    /**
+     * The hard maximum size for a chunk.
+     * No chunk will exceed this number of characters.
+     * A single element that by itself exceeds this size will be divided into two or more chunks using text-splitting.
+     */
+    max_characters?: number;
+
+    /**
+     * The “soft” maximum size for a chunk.
+     * A chunk that already exceeds this number of characters will not be extended,
+     * even if the next element would fit without exceeding the specified hard maximum.
+     * This can be used in conjunction with max_characters to set a “preferred” size,
+     * like “I prefer chunks of around 1000 characters,
+     * but I’d rather have a chunk of 1500 (max_characters) than resort to text-splitting”.
+     * This would be specified with (..., max_characters=1500, new_after_n_chars=1000).
+     */
+    new_after_n_chars?: number;
+
+    /**
+     * Only when using text-splitting to break up an oversized chunk,
+     * include this number of characters from the end of the prior chunk as a prefix on the next.
+     * This can mitigate the effect of splitting the semantic unit represented by the
+     * oversized element at an arbitrary position based on text length.
+     */
+    overlap?: number
+
+    /**
+     * Also apply overlap between “normal” chunks, not just when text-splitting to break up an oversized element.
+     * Because normal chunks are formed from whole elements that each have a clean semantic boundary,
+     * this option may “pollute” normal chunks.
+     * You’ll need to decide based on your use-case whether this option is right for you.
+     */
+    overlap_all?: boolean
+
     /**
      * Any additional properties.
      * kwargs support disabled for now
@@ -212,9 +254,19 @@ export const UnstructuredIO = {
           model_name: options.model_name,
           date_from_file_object: options.date_from_file_object,
           starting_page_number: options.starting_page_number ?? 1,
+
+          /**
+           * Chunking params below
+           */
+          chunking_strategy: options.chunking_strategy,
+          max_characters: options.max_characters,
+          new_after_n_chars: options.new_after_n_chars,
+          overlap: options.overlap,
+          overlap_all: options.overlap_all
         }),
       );
     });
+
     return result as Array<{
       type?: string;
       element_id?: string;
