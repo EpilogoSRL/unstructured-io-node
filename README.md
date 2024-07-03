@@ -20,7 +20,7 @@ pnpm add @epilogo/unstructured-io-node
 
 The post-installation script (`install.sh`) will execute the following:
 
-1. **Clone the `unstructured-io` repository:** It clones a specific commit `293901e1447e0c0797382bb44dda67cada32ba97` repository into a `python/unstructured-io` directory within the library's folder.
+1. **Clone the `unstructured-io` repository:** It clones a specific commit `493bfccdddd8cb1f8d70aedcfefc38917f2b3197` repository into a `python/unstructured-io` directory within the library's folder.
 2. **Install system dependencies:** Based on your operating system (currently supporting Linux and macOS), it installs the necessary system packages for `unstructured` to function. These packages include tools for image processing, OCR, and handling various document formats.
 3. **Create and activate a Python virtual environment:** It creates a virtual environment within the `python` directory to isolate the Python dependencies of this library.
 4. **Install Python dependencies:** It installs the `unstructured` Python package along with its dependencies within the activated virtual environment.
