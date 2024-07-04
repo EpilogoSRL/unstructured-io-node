@@ -5,7 +5,7 @@ import PartitionsAFileWithOCR from './data/partitions-a-file-with-ocr.json';
 import PartitionsAndChunksAFile from './data/partitions-and-chunks-a-file.json';
 import { ensureEnvironmentSetup } from '../src/utils/ensureEnvironmentSetup';
 
-describe('unstructured-io-node', () => {
+describe('UnstructuredIO', () => {
   beforeAll(async () => {
     // Give enough timeout in case the dependencies need to be installed
     await ensureEnvironmentSetup();

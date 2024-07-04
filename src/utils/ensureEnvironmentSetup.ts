@@ -21,15 +21,15 @@ export async function ensureEnvironmentSetup() {
     return;
   }
 
-  fs.chmodSync(installScriptPath, '755')
-  fs.chmodSync(unstructuredScriptPath, '755')
+  fs.chmodSync(installScriptPath, '755');
+  fs.chmodSync(unstructuredScriptPath, '755');
 
   return new Promise<void>((resolve, reject) => {
     console.log('venv does not exist, running install script');
     const child = spawn(installScriptPath, {
       stdio: 'inherit',
       shell: true,
-      cwd: rootDir()
+      cwd: rootDir(),
     });
 
     child.on('error', (error) => {
