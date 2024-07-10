@@ -27,7 +27,7 @@ if [ "$UNAME" == "Linux" ] ; then
     # Assume Debian-based Linux
     sudo_command apt-get update
     sudo_command apt-get install -y \
-      pandoc \
+      pandoc=3.2.1 \
       poppler-utils \
       libleptonica-dev \
       tesseract-ocr \
@@ -40,7 +40,7 @@ if [ "$UNAME" == "Linux" ] ; then
 elif [ "$UNAME" == "Darwin" ] ; then
     # macOS
     brew update
-    brew install pandoc \
+    brew install pandoc@3.2.1 \
       poppler \
       leptonica \
       tesseract-ocr \
