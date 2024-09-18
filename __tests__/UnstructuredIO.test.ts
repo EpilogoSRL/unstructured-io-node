@@ -14,11 +14,15 @@ describe('UnstructuredIO', () => {
   it('partitions a file', async () => {
     const partitioned = await UnstructuredIO.partition({
       filename: path.join(__dirname, '../__tests__/data/node-calls-python.pdf'),
-      strategy: 'hi_res',
+      strategy: 'auto',
       languages: ['eng'],
       xml_keep_tags: true,
+      additional_partition_args: {
+        coordinates: true,
+      }
     });
 
+    expect(partitioned[0].metadata.coordinates.system).toBeDefined();
     expect(partitioned).toMatchObject(PartitionsAFile);
   }, 200 * 1000);
 

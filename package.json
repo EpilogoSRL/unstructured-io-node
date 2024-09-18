@@ -1,6 +1,6 @@
 {
   "name": "@epilogo/unstructured-io-node",
-  "version": "1.0.20",
+  "version": "2.0.0",
   "description": "Node bindings for unstructured.io",
   "author": "Krishan Marco Madan <krishan.madan@epilogo.co>",
   "license": "Apache-2.0",

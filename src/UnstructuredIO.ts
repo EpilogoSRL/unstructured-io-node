@@ -62,10 +62,6 @@ export const UnstructuredIO = {
     encoding?: string;
 
     /**
-     * A function or false. */
-    paragraph_grouper?: ((text: string) => string) | false;
-
-    /**
      * The headers to be used in conjunction with the HTTP request if URL is set.
      */
     headers?: { [key: string]: string };
@@ -83,21 +79,9 @@ export const UnstructuredIO = {
     ssl_verify?: boolean;
 
     /**
-     * @deprecated
-     * Use 'languages' instead. The OCR languages for the document.
-     */
-    ocr_languages?: string;
-
-    /**
      * The languages present in the document, for OCR and partitioning.
      */
     languages?: string[];
-
-    /**
-     * Detect language per element instead of at the document level.
-     * Default is false.
-     */
-    detect_language_per_element?: boolean;
 
     /**
      * @deprecated
@@ -117,31 +101,21 @@ export const UnstructuredIO = {
      */
     extract_image_block_types?: string[];
 
-    /** Path for saving images from documents. Applicable if 'strategy=hi_res'.
-     */
-    extract_image_block_output_dir?: string;
-
     /**
      * If true, stores images in the payload. Applicable if 'strategy=hi_res'.
      * Default is false.
      */
     extract_image_block_to_payload?: boolean;
 
+    /** Path for saving images from documents. Applicable if 'strategy=hi_res'.
+     */
+    extract_image_block_output_dir?: string;
+
     /**
      * If true, retains the XML tags in the output. Only applies to partition_xml.
      * Default is false.
      */
     xml_keep_tags?: boolean;
-
-    /**
-     * Additional metadata about the data source.
-     */
-    data_source_metadata?: any; // This needs a specific type if available
-
-    /**
-     * The filename to use for metadata when a file is provided.
-     */
-    metadata_filename?: string;
 
     /**
      * The timeout for the HTTP request if URL is set.
@@ -171,6 +145,34 @@ export const UnstructuredIO = {
      * Default is 1.
      */
     starting_page_number?: number;
+
+    /**
+     * @deprecated
+     * A function or false.
+     * */
+    paragraph_grouper?: never;
+
+    /**
+     * @deprecated
+     * Use 'languages' instead. The OCR languages for the document.
+     */
+    ocr_languages?: string;
+
+    /**
+     * Detect language per element instead of at the document level.
+     * Default is false.
+     */
+    detect_language_per_element?: boolean;
+
+    /**
+     * Additional metadata about the data source.
+     */
+    data_source_metadata?: any; // This needs a specific type if available
+
+    /**
+     * The filename to use for metadata when a file is provided.
+     */
+    metadata_filename?: string;
 
     /**
      * Chunking params below
@@ -212,6 +214,10 @@ export const UnstructuredIO = {
      * You’ll need to decide based on your use-case whether this option is right for you.
      */
     overlap_all?: boolean;
+
+    additional_partition_args?: {
+      coordinates?: boolean,
+    }
     /**
      * Any additional properties.
      * kwargs support disabled for now
@@ -225,6 +231,10 @@ export const UnstructuredIO = {
         cleanArgs({
           // Must match python/unstructured.io/unstructured/partition/auto.py::partition signature
           __kwargs: true,
+
+          // Allow unknown parameter injection
+          ...options,
+
           filename: options.filename,
           content_type: options.content_type,
           file: options.file,

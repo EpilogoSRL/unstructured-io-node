@@ -15,8 +15,10 @@ describe('UnstructuredIOAsync', () => {
       strategy: 'hi_res',
       languages: ['eng'],
       xml_keep_tags: true,
-      chunking_strategy: 'basic',
       max_characters: 5,
+      additional_partition_args: {
+        coordinates: true,
+      }
     }, {
       absoluteTmpDir: __dirname,
       signal: undefined,
@@ -25,6 +27,7 @@ describe('UnstructuredIOAsync', () => {
       }
     });
 
+    expect(partitioned[0].metadata.coordinates.system).toBeDefined();
     expect(partitioned).toMatchObject(PartitionsAndChunksAFile);
   }, 200 * 1000);
 
