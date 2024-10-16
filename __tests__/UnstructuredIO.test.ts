@@ -1,4 +1,4 @@
-import { UnstructuredIO, UnstructuredIOAsync } from '../src';
+import { UnstructuredIO } from '../src';
 import * as path from 'path';
 import PartitionsAFile from './data/partitions-a-file.json';
 import PartitionsAFileWithOCR from './data/partitions-a-file-with-ocr.json';

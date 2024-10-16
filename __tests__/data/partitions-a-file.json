@@ -20,10 +20,6 @@
     "text": "a."
   },
   {
-    "type": "Image",
-    "text": ""
-  },
-  {
     "type": "NarrativeText",
     "text": "Search packages"
   },
@@ -69,19 +65,23 @@
   },
   {
     "type": "Title",
-    "text": "Suitable for running your ML or deep learning models from Node directly"
-  },
-  {
-    "type": "NarrativeText",
-    "text": "Node.js CI passing Node.js CI"
+    "text": "Suitable for running your ML or deep learning models"
   },
   {
     "type": "Title",
-    "text": "PayPal Donate PayPal Donate"
+    "text": "from Node directly"
   },
   {
     "type": "NarrativeText",
-    "text": "v1.9.1 passing npmnpm v1.9.1"
+    "text": "Donate PayPal Donate Node.js CI passing v1.9.1 Node.js CI"
+  },
+  {
+    "type": "Title",
+    "text": "PayPal"
+  },
+  {
+    "type": "NarrativeText",
+    "text": "passing npmnpm v1.9.1"
   },
   {
     "type": "Title",
@@ -773,7 +773,11 @@
   },
   {
     "type": "NarrativeText",
-    "text": "See more examples here Supported data mapping"
+    "text": "See more examples here"
+  },
+  {
+    "type": "Title",
+    "text": "Supported data mapping"
   },
   {
     "type": "Title",
