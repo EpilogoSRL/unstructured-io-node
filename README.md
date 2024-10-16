@@ -6,7 +6,7 @@
 To release a new version
 1. Replace all `6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5` with the new hash
 2. Replace all `0.15.14` with the new version tag
-3. Run `./scripts/unstructured.sh`
+3. Run `./scripts/install.sh`
 
 This library provides Node.js bindings to the `unstructured.io` Python module. It enables Node.js applications to utilize the document parsing capabilities of the `unstructured` library.
 

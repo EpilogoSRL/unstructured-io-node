@@ -10,8 +10,7 @@ import { StringifiableError } from './StringifiableError';
  */
 export async function ensureEnvironmentSetup() {
   const venvPath = rootDir('/python/venv');
-  const scriptsDir = rootDir('/scripts');
-  const installCompleteFilePath = '/tmp/unstructured_io_1_0_13_setup_complete';
+  const installCompleteFilePath = '/tmp/unstructured_io_0.15.14_setup_complete';
   const installScriptPath = rootDir('/scripts/install.sh');
   const unstructuredScriptPath = rootDir('/scripts/unstructured.sh');
 

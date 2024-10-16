@@ -1,2 +1,2 @@
-FROM krishanmarco/unstructured-io-node:latest
+FROM epilogo_unstructured
 CMD (pnpm run test && echo "Tests passed" || (echo "Tests failed" && exit 1))

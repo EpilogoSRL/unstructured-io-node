@@ -8,7 +8,7 @@ sudo_command() {
   fi
 }
 
-SCRIPT_DIR=./scripts
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PYTHON_DIR="$SCRIPT_DIR/../python"
 UNAME=$(uname -s)
 
@@ -23,16 +23,16 @@ if [ "$UNAME" == "Linux" ] ; then
     sudo_command apt-get install -y \
       make \
       g++ \
-      python3 \
-      python3-dev \
-      python3-venv \
+      python3.12 \
+      python3.12-dev \
+      python3.12-venv \
       python3-distutils \
       python3-distutils-extra \
       python3-pip;
 elif [ "$UNAME" == "Darwin" ] ; then
     # macOS
     brew update
-    brew install python3;
+    brew install python@3.12;
 else
     echo "Unsupported operating system"
     exit 1

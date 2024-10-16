@@ -7,9 +7,7 @@ UNAME=$(uname -s)
 if [ ! -d "$PYTHON_DIR/unstructured-io" ]; then
   ssh-keyscan github.com >> ~/.ssh/known_hosts &&
   (
-    # Navigate to the directory
     cd "$PYTHON_DIR" && \
-    # Execute the following commands in a subshell
     (
       git clone --depth 1 git@github.com:krishanmarco/unstructured-io.git unstructured-io \
         && cd unstructured-io \
@@ -24,7 +22,6 @@ fi
 ### Unstructured dependencies
 ###
 if [ "$UNAME" == "Linux" ] ; then
-    # Assume Debian-based Linux
     sudo_command apt-get update
     sudo_command apt-get install -y \
       pandoc=3.2.1 \
@@ -38,7 +35,6 @@ if [ "$UNAME" == "Linux" ] ; then
       libxext6 \
       libmagic-dev;
 elif [ "$UNAME" == "Darwin" ] ; then
-    # macOS
     brew update
     brew install pandoc@3.2.1 \
       poppler \
@@ -53,21 +49,26 @@ else
     exit 1
 fi
 
+
+install_pip_dependencies() {
+  python3.12 -m pip install --upgrade pip setuptools
+  python3.12 -m pip install "numpy<2.0"
+  python3.12 -m pip install "unstructured[all-docs]==0.15.14"
+  python3.12 -m pip install requests
+  python3.12 -m pip install psutil
+}
+
 ###
 ### Unstructured dependencies (pip)
 ###
 if [ "$UNAME" == "Linux" ] ; then
-  echo "Nothing to do"
-elif [ "$UNAME" == "Darwin" ] ; then
-  python3 -m venv "$PYTHON_DIR"/venv
-  source "$PYTHON_DIR"/venv/bin/activate
-else
-    echo "Unsupported operating system"
-    exit 1
+    # Install dependencies in the parent environment
+    install_pip_dependencies
 fi
 
-python3 -m pip install --upgrade pip setuptools
-python3 -m pip install "numpy<2.0"
-python3 -m pip install "unstructured[all-docs]==0.15.14";
-python3 -m pip install requests;
-python3 -m pip install psutil;
+# Create and activate the virtual environment
+python3.12 -m venv "$PYTHON_DIR"/venv
+source "$PYTHON_DIR"/venv/bin/activate
+
+# Install dependencies in the virtual environment
+install_pip_dependencies
