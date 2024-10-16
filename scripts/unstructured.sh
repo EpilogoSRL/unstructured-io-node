@@ -13,8 +13,8 @@ if [ ! -d "$PYTHON_DIR/unstructured-io" ]; then
     (
       git clone --depth 1 git@github.com:krishanmarco/unstructured-io.git unstructured-io \
         && cd unstructured-io \
-        && git fetch --depth 1 origin 8b7e5bbeac17f6a782a629538f7108da3e9f4fbf \
-        && git checkout 8b7e5bbeac17f6a782a629538f7108da3e9f4fbf \
+        && git fetch --depth 1 origin 6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5 \
+        && git checkout 6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5 \
         && rm -rf .git
     )
   )
@@ -68,6 +68,6 @@ fi
 
 python3 -m pip install --upgrade pip setuptools
 python3 -m pip install "numpy<2.0"
-python3 -m pip install "unstructured[all-docs]==0.15.12";
+python3 -m pip install "unstructured[all-docs]==0.15.14";
 python3 -m pip install requests;
 python3 -m pip install psutil;
