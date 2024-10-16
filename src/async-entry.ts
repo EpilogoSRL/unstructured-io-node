@@ -1,12 +1,13 @@
 import fs from 'fs';
 import * as util from 'util';
 import { UnstructuredIO } from './UnstructuredIO';
+import { StringifiableError } from './utils/StringifiableError';
 
 const writeFile = util.promisify(fs.writeFile);
 
 function checkStringParam(name: string, value: any) {
   if (!value || value.length <= 0) {
-    throw new Error([
+    throw new StringifiableError([
       'async-entry',
       `Parameter Validation: ${name} was not specified`,
     ].join(', '));

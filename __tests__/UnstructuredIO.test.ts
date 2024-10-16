@@ -1,4 +1,4 @@
-import { UnstructuredIO } from '../src';
+import { UnstructuredIO, UnstructuredIOAsync } from '../src';
 import * as path from 'path';
 import PartitionsAFile from './data/partitions-a-file.json';
 import PartitionsAFileWithOCR from './data/partitions-a-file-with-ocr.json';
@@ -49,5 +49,22 @@ describe('UnstructuredIO', () => {
     });
 
     expect(partitioned).toMatchObject(PartitionsAndChunksAFile);
+  }, 200 * 1000);
+
+  it('throws meaningful errors', async () => {
+    try {
+      await UnstructuredIO.partition({
+        filename: '/file-that-doesnt-exist.pdf',
+        strategy: 'hi_res',
+        languages: ['eng'],
+        xml_keep_tags: true,
+        chunking_strategy: 'basic',
+        max_characters: 5,
+      });
+    } catch(e) {
+      expect(e.name.length).toBeGreaterThan(1);
+      expect(e.message.length).toBeGreaterThan(10);
+      expect(e.stack.length).toBeGreaterThan(10);
+    }
   }, 200 * 1000);
 });

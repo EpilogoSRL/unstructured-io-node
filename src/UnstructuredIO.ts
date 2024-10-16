@@ -4,6 +4,7 @@ import { MutexValue } from './utils/MutexValue';
 import { rootDir } from './utils/rootDir';
 import { ensureEnvironmentSetup } from './utils/ensureEnvironmentSetup';
 import { fileExistsAsync } from './utils/fileExistsAsync';
+import { StringifiableError } from './utils/StringifiableError';
 
 const pythonEntry = new MutexValue(async () => {
   const venv = rootDir('/python/venv/lib/python3.12/site-packages');
@@ -149,7 +150,7 @@ export const UnstructuredIO = {
     /**
      * @deprecated
      * A function or false.
-     * */
+     */
     paragraph_grouper?: never;
 
     /**
@@ -216,8 +217,8 @@ export const UnstructuredIO = {
     overlap_all?: boolean;
 
     additional_partition_args?: {
-      coordinates?: boolean,
-    }
+      coordinates?: boolean;
+    };
     /**
      * Any additional properties.
      * kwargs support disabled for now
@@ -303,10 +304,6 @@ async function errorHandler<T>(fn: () => Promise<T>) {
   try {
     return await fn();
   } catch (e) {
-    if (typeof e === 'string') {
-      throw new Error(e);
-    }
-
-    throw e;
+    throw new StringifiableError(e);
   }
 }

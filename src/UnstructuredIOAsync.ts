@@ -5,6 +5,7 @@ import * as util from 'util';
 import * as fs from 'fs';
 import * as childProcess from 'child_process';
 import { fileExistsAsync } from './utils/fileExistsAsync';
+import { StringifiableError } from './utils/StringifiableError';
 
 const rm = util.promisify(fs.rm);
 const readFile = util.promisify(fs.readFile);
@@ -73,7 +74,7 @@ function createCallSyncAPI<Func extends keyof TUnstructuredIO>(func: Func) {
           return;
         }
 
-        reject(new Error(`Child process exited with code ${code}`));
+        reject(new StringifiableError(`Child process exited with code ${code}`));
       });
 
       child.on('error', (err) => {
@@ -86,7 +87,7 @@ function createCallSyncAPI<Func extends keyof TUnstructuredIO>(func: Func) {
     await rm(resultFile);
 
     if (result === 'error') {
-      throw new Error(JSON.stringify(data));
+      throw new StringifiableError(data);
     }
 
     return data;

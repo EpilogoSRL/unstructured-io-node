@@ -2,6 +2,7 @@ import { spawn } from 'child_process';
 import { fileExistsAsync } from './fileExistsAsync';
 import { rootDir } from './rootDir';
 import fs from 'fs';
+import { StringifiableError } from './StringifiableError';
 
 /**
  * Check if the python venv directory exists
@@ -44,7 +45,7 @@ export async function ensureEnvironmentSetup() {
         resolve();
       } else {
         console.error(`install script exited with code ${code}`);
-        reject(new Error(`install script exited with code ${code}`));
+        reject(new StringifiableError(`install script exited with code ${code}`));
       }
     });
   });

@@ -71,4 +71,26 @@ describe('UnstructuredIOAsync', () => {
       cause: 'User aborted'
     });
   }, 200 * 1000);
+
+  it('throws meaningful errors', async () => {
+    try {
+      await UnstructuredIOAsync.partition({
+      filename: '/file-that-doesnt-exist.pdf',
+      strategy: 'hi_res',
+      languages: ['eng'],
+      xml_keep_tags: true,
+      chunking_strategy: 'basic',
+      max_characters: 5,
+    }, {
+      absoluteTmpDir: __dirname,
+      nodeOptions: {
+        maxOldSpaceSize: 2048,
+      }
+    });
+    } catch(e) {
+      expect(e.name.length).toBeGreaterThan(1);
+      expect(e.message.length).toBeGreaterThan(10);
+      expect(e.stack.length).toBeGreaterThan(10);
+    }
+  }, 200 * 1000);
 });
