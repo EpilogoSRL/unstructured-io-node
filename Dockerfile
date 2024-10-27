@@ -43,9 +43,8 @@ RUN apt-get install -y -q --no-install-recommends \
     libreoffice \
     pandoc \
     tesseract-ocr \
+    tesseract-ocr-all \
     libtesseract-dev \
-    tesseract-ocr-eng \
-    tesseract-ocr-rus \
     libmagic-dev \
     && rm -rf /var/lib/apt/lists/*
 
