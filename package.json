@@ -1,6 +1,6 @@
 {
   "name": "@epilogo/unstructured-io-node",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Node bindings for unstructured.io",
   "author": "Krishan Marco Madan <krishan.madan@epilogo.co>",
   "license": "Apache-2.0",
@@ -30,8 +30,8 @@
   "scripts": {
     "test": "jest --coverage --runInBand",
     "test:docker": "docker build -f Dockerfile -t epilogo_unstructured . && docker build -f Dockerfile.test -t epilogo_unstructured_test . && docker run -it epilogo_unstructured_test",
-    "publish:docker": "docker build -t krishanmarco/unstructured-io-node:latest -t krishanmarco/unstructured-io-node:2.0.5 --no-cache --push .",
-    "publish:docker-multiarch": "docker buildx build --platform linux/amd64,linux/arm64 -t krishanmarco/unstructured-io-node:latest -t krishanmarco/unstructured-io-node:2.0.5 --push .",
+    "publish:docker": "docker build -t krishanmarco/unstructured-io-node:latest -t krishanmarco/unstructured-io-node:2.0.6 --no-cache --push .",
+    "publish:docker-multiarch": "docker buildx build --platform linux/amd64,linux/arm64 -t krishanmarco/unstructured-io-node:latest -t krishanmarco/unstructured-io-node:2.0.6 --push .",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx --color --fix",
     "build": "pnpm run build:cjs && pnpm run build:types",
     "build:cjs": "tsc",
