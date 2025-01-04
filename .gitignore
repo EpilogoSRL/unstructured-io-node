@@ -79,3 +79,5 @@ logs
 python/venv
 python/__pycache__
 python/unstructured-io
+
+scripts/setup_complete

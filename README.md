@@ -1,12 +1,15 @@
 # @epilogo/unstructured-io-node
 
-- Current Hash `6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5`
-- Current Version: `0.15.14` https://github.com/Unstructured-IO/unstructured/commit/6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5
+- Current Hash `b981d7197f06710027bf7a92446830fd917e6586`
+- Current Version: `0.16.11` https://github.com/Unstructured-IO/unstructured/commit/b981d7197f06710027bf7a92446830fd917e6586
 
 To release a new version
-1. Replace all `6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5` with the new hash
-2. Replace all `0.15.14` with the new version tag
-3. Run `./scripts/install.sh`
+1. Replace all `b981d7197f06710027bf7a92446830fd917e6586` with the new hash
+2. Replace all `0.16.11` with the new version tag
+3. Replace all relevant `2.0.7` with the new @epilogo/unstructured-io-node version tag
+4. Delete `./python/unstructured-io` dir
+5. Run `./scripts/install.sh` from root
+6. Run tests `pnpm run test`
 
 This library provides Node.js bindings to the `unstructured.io` Python module. It enables Node.js applications to utilize the document parsing capabilities of the `unstructured` library.
 
@@ -28,7 +31,7 @@ pnpm add @epilogo/unstructured-io-node
 
 The post-installation script (`install.sh`) will execute the following:
 
-1. **Clone the `unstructured-io` repository:** It clones a specific commit `6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5` repository into a `python/unstructured-io` directory within the library's folder.
+1. **Clone the `unstructured-io` repository:** It clones a specific commit `b981d7197f06710027bf7a92446830fd917e6586` repository into a `python/unstructured-io` directory within the library's folder.
 2. **Install system dependencies:** Based on your operating system (currently supporting Linux and macOS), it installs the necessary system packages for `unstructured` to function. These packages include tools for image processing, OCR, and handling various document formats.
 3. **Create and activate a Python virtual environment:** It creates a virtual environment within the `python` directory to isolate the Python dependencies of this library.
 4. **Install Python dependencies:** It installs the `unstructured` Python package along with its dependencies within the activated virtual environment.
@@ -48,7 +51,7 @@ import * as path from 'path';
 await UnstructuredIO.ensureEnvironmentSetup();
 
 const partitioned = await UnstructuredIO.partition({
- filename: path.join(__dirname, '../__tests__/data/your-document.pdf'), 
+ filename: path.join(__dirname, '../__tests__/data/your-document.pdf'),
  strategy: 'hi_res',
  languages: ['eng'],
 });

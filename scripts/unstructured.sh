@@ -11,8 +11,8 @@ if [ ! -d "$PYTHON_DIR/unstructured-io" ]; then
     (
       git clone --depth 1 git@github.com:krishanmarco/unstructured-io.git unstructured-io \
         && cd unstructured-io \
-        && git fetch --depth 1 origin 6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5 \
-        && git checkout 6ba376ab7eaa73e12be35438bae47cfa0ca7dfe5 \
+        && git fetch --depth 1 origin b981d7197f06710027bf7a92446830fd917e6586 \
+        && git checkout b981d7197f06710027bf7a92446830fd917e6586 \
         && rm -rf .git
     )
   )
@@ -53,7 +53,7 @@ fi
 install_pip_dependencies() {
   python3.12 -m pip install --upgrade pip setuptools
   python3.12 -m pip install "numpy<2.0"
-  python3.12 -m pip install "unstructured[all-docs]==0.15.14"
+  python3.12 -m pip install "unstructured[all-docs]==0.16.11"
   python3.12 -m pip install requests
   python3.12 -m pip install psutil
 }
@@ -69,6 +69,4 @@ fi
 # Create and activate the virtual environment
 python3.12 -m venv "$PYTHON_DIR"/venv
 source "$PYTHON_DIR"/venv/bin/activate
-
-# Install dependencies in the virtual environment
 install_pip_dependencies
