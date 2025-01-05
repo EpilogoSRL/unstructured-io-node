@@ -1,6 +1,6 @@
 import { UnstructuredIOAsync } from '../src';
 import * as path from 'path';
-import PartitionsAndChunksAFile from './data/partitions-and-chunks-a-file.json';
+import PartitionsAndChunksAFile2 from './data/partitions-and-chunks-a-file2.json';
 import { ensureEnvironmentSetup } from '../src/utils/ensureEnvironmentSetup';
 
 describe('UnstructuredIOAsync', () => {
@@ -28,7 +28,7 @@ describe('UnstructuredIOAsync', () => {
     });
 
     expect(partitioned[0].metadata.coordinates.system).toBeDefined();
-    expect(partitioned).toMatchObject(PartitionsAndChunksAFile);
+    expect(partitioned).toMatchObject(PartitionsAndChunksAFile2);
   }, 200 * 1000);
 
   it('aborts partitioning', async () => {

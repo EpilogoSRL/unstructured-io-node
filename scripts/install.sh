@@ -23,16 +23,17 @@ if [ "$UNAME" == "Linux" ] ; then
     sudo_command apt-get install -y \
       make \
       g++ \
-      python3.12 \
-      python3.12-dev \
-      python3.12-venv \
+      python3.11 \
+      python3.11-dev \
+      python3.11-venv \
       python3-distutils \
       python3-distutils-extra \
       python3-pip;
 elif [ "$UNAME" == "Darwin" ] ; then
-    # macOS
-    brew update
-    brew install python@3.12;
+    echo "Nothing to do"
+#    # macOS
+#    brew update
+#    brew install python@3.11;
 else
     echo "Unsupported operating system"
     exit 1

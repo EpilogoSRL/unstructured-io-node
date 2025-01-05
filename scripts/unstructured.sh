@@ -35,15 +35,14 @@ if [ "$UNAME" == "Linux" ] ; then
       libxext6 \
       libmagic-dev;
 elif [ "$UNAME" == "Darwin" ] ; then
-    brew update
-    brew install pandoc@3.2.1 \
-      poppler \
-      leptonica \
-      tesseract-ocr \
-      tesseract-lang \
-      tesseract \
-      libreoffice \
-      libmagic;
+    brew install pandoc@3.2.1
+    brew install poppler
+    brew install leptonica
+    brew install tesseract-ocr
+    brew install tesseract-ocr
+    brew install tesseract
+    brew install libreoffice
+    brew install libmagic
 else
     echo "Unsupported operating system"
     exit 1
@@ -51,11 +50,8 @@ fi
 
 
 install_pip_dependencies() {
-  python3.12 -m pip install --upgrade pip setuptools
-  python3.12 -m pip install "numpy<2.0"
-  python3.12 -m pip install "unstructured[all-docs]==0.16.11"
-  python3.12 -m pip install requests
-  python3.12 -m pip install psutil
+  python3.11 -m pip install --upgrade pip setuptools
+  python3.11 -m pip install "unstructured[all-docs]==0.16.11"
 }
 
 ###
@@ -67,6 +63,8 @@ if [ "$UNAME" == "Linux" ] ; then
 fi
 
 # Create and activate the virtual environment
-python3.12 -m venv "$PYTHON_DIR"/venv
+python3.11 -m venv "$PYTHON_DIR"/venv
 source "$PYTHON_DIR"/venv/bin/activate
 install_pip_dependencies
+
+cp "$SCRIPT_DIR/activate_this.py" "$PYTHON_DIR/venv/bin/activate_this.py"

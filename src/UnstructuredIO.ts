@@ -7,7 +7,7 @@ import { fileExistsAsync } from './utils/fileExistsAsync';
 import { StringifiableError } from './utils/StringifiableError';
 
 const pythonEntry = new MutexValue(async () => {
-  const venv = rootDir('/python/venv/lib/python3.12/site-packages');
+  const venv = rootDir('/python/venv/lib/python3.11/site-packages');
   if (await fileExistsAsync(venv)) {
     interpreter.addImportPath(venv);
   }

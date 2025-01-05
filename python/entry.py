@@ -2,8 +2,13 @@ import sys
 import os
 import traceback
 
-current_script_path = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_script_path, './unstructured.io'))
+activate_this = os.path.join(os.path.dirname(os.path.abspath(__file__)), './venv/bin/activate_this.py')
+with open(activate_this) as f:
+    exec(f.read(), {'__file__': activate_this})
+
+unstructured_io_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'unstructured-io')
+if unstructured_io_path not in sys.path:
+    sys.path.append(unstructured_io_path)
 
 from unstructured.partition.auto import partition as unstructured_partition
 from unstructured.staging.base import elements_to_dicts

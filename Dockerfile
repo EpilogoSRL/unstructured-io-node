@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-c"]
 # Set debconf to run non-interactively
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-# Add deadsnakes PPA for Python 3.12 and Tesseract OCR PPA
+# Add deadsnakes PPA for Python 3.11 and Tesseract OCR PPA
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     && add-apt-repository ppa:deadsnakes/ppa \
@@ -32,12 +32,12 @@ RUN apt-get install -y -q --no-install-recommends \
     make \
     g++ \
     node-gyp \
-    python3.12 \
-    python3.12-dev \
-    python3.12-venv \
+    python3.11 \
+    python3.11-dev \
+    python3.11-venv \
     python3-pip \
-    python3.12-distutils \
-    libpython3.12 \
+    python3.11-distutils \
+    libpython3.11 \
     libgl1 \
     poppler-utils \
     libreoffice \
@@ -48,25 +48,25 @@ RUN apt-get install -y -q --no-install-recommends \
     libmagic-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install pip compatible with Python 3.12
+# Install pip compatible with Python 3.11
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python3.12 get-pip.py \
+    && python3.11 get-pip.py \
     && rm get-pip.py
 
 # **Set PYTHON environment variable for node-gyp**
-ENV PYTHON=python3.12
+ENV PYTHON=python3.11
 
-# **Force all 'python3' and 'python' commands to use Python 3.12**
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1 \
-    && update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1 \
-    && update-alternatives --set python3 /usr/bin/python3.12 \
-    && update-alternatives --set python /usr/bin/python3.12
+# **Force all 'python3' and 'python' commands to use Python 3.11**
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
+    && update-alternatives --set python3 /usr/bin/python3.11 \
+    && update-alternatives --set python /usr/bin/python3.11
 
-# **Ensure 'python3-config' and 'python-config' point to Python 3.12**
-RUN ln -sf /usr/bin/python3.12-config /usr/bin/python3-config \
-    && ln -sf /usr/bin/python3.12-config /usr/bin/python-config
+# **Ensure 'python3-config' and 'python-config' point to Python 3.11**
+RUN ln -sf /usr/bin/python3.11-config /usr/bin/python3-config \
+    && ln -sf /usr/bin/python3.11-config /usr/bin/python-config
 
-# Verify that 'python' and 'python3' point to Python 3.12
+# Verify that 'python' and 'python3' point to Python 3.11
 RUN python --version && python3 --version
 
 # Install Node.js via NVM and set up global packages
@@ -81,6 +81,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
 
 # Ensure the NVM path is available
 ENV PATH="$NVM_DIR/versions/node/v${NODE_VERSION}/bin/:${PATH}"
+ENV NO_DIST='false'
 
 # Set up application directory and copy files
 RUN mkdir -p /app
