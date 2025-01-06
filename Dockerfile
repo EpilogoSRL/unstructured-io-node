@@ -81,7 +81,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
 
 # Ensure the NVM path is available
 ENV PATH="$NVM_DIR/versions/node/v${NODE_VERSION}/bin/:${PATH}"
-ENV NO_DIST='false'
 
 # Set up application directory and copy files
 RUN mkdir -p /app

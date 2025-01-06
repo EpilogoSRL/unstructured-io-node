@@ -39,7 +39,7 @@ elif [ "$UNAME" == "Darwin" ] ; then
     brew install poppler
     brew install leptonica
     brew install tesseract-ocr
-    brew install tesseract-ocr
+    brew install tesseract-lang
     brew install tesseract
     brew install libreoffice
     brew install libmagic
