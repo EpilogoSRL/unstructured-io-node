@@ -6,7 +6,7 @@
 To release a new version
 1. Replace all `b981d7197f06710027bf7a92446830fd917e6586` with the new hash
 2. Replace all `0.16.11` with the new version tag
-3. Replace all relevant `2.0.8` with the new @epilogo/unstructured-io-node version tag
+3. Replace all relevant `2.0.9` with the new @epilogo/unstructured-io-node version tag
 4. Delete `./python/unstructured-io` dir
 5. Run `./scripts/install.sh` from root
 6. Run tests `pnpm run test`
